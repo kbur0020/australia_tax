@@ -2,7 +2,7 @@
 
 A data investigation into how much Australians pay in tax, where it goes, and the $269 billion the government chooses not to collect through tax concessions.
 
-**Live site:** https://[your-username].github.io/[repo-name]/
+**Live site:** https://kbur0020.github.io/australia_tax/
 **Sketch (PDF):** [link to sketch in repo]
 
 ## About this project
@@ -105,7 +105,7 @@ editorial decisions are the author's.
 
 ## Licence
 
-© [Your name] 2026. The visualisation, narrative text, and original code in this
+© Kai Burke 2026. The visualisation, narrative text, and original code in this
 repository are released under [Creative Commons Attribution 4.0
 International](https://creativecommons.org/licenses/by/4.0/).
 
