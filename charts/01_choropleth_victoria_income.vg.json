@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Where the money lives",
+    "subtitle": ["Average taxable income by Victorian postcode, 2022-23. Toorak (3142) leads at $241,511.", "Source: ATO Taxation Statistics 2022-23, Snapshot Table 7."],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "offset": 12
+  },
+  "width": 720,
+  "height": 540,
+  "background": "transparent",
+  "config": {
+    "view": {"stroke": null},
+    "font": "Source Sans 3, Source Sans Pro, sans-serif"
+  },
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "data/victoria_postcodes_topo.json",
+    "format": {"type": "topojson", "feature": "POA_2021_VIC"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.POA_CODE21",
+      "from": {
+        "data": {"url": "data/ato_postcode_victoria.csv"},
+        "key": "postcode",
+        "fields": ["avg_taxable_income", "median_taxable_income", "individuals", "rank_state"]
+      }
+    },
+    {"filter": "datum.avg_taxable_income != null"}
+  ],
+  "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.3},
+  "encoding": {
+    "color": {
+      "field": "avg_taxable_income",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [50000, 65000, 80000, 100000, 130000],
+        "range": ["#fef3e8", "#fde0bd", "#f7c279", "#e69b3a", "#b96f1c", "#7a4310"]
+      },
+      "legend": {
+        "title": "Average taxable income (AUD)",
+        "titleFontSize": 11,
+        "titleFontWeight": 500,
+        "labelFontSize": 10,
+        "orient": "bottom-right",
+        "direction": "horizontal",
+        "format": "$,d",
+        "gradientLength": 200
+      }
+    },
+    "tooltip": [
+      {"field": "properties.POA_CODE21", "title": "Postcode", "type": "nominal"},
+      {"field": "avg_taxable_income", "title": "Avg taxable income", "format": "$,.0f"},
+      {"field": "median_taxable_income", "title": "Median taxable income", "format": "$,.0f"},
+      {"field": "individuals", "title": "Tax filers", "format": ",d"},
+      {"field": "rank_state", "title": "VIC rank", "format": "d"}
+    ]
+  }
+}

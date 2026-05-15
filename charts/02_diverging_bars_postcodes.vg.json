@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "A 69-fold gap, in the same country",
+    "subtitle": ["Top 10 vs bottom 10 Australian postcodes by average taxable income, 2022-23.", "Source: ATO Taxation Statistics 2022-23, Snapshot Table 7A."],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "offset": 12
+  },
+  "width": 640,
+  "height": 480,
+  "background": "transparent",
+  "data": {"url": "data/ato_top_bottom_10_australia.csv"},
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 11, "titleFontSize": 12, "titleFontWeight": 500, "labelColor": "#3a3a3a"}
+  },
+  "transform": [
+    {"calculate": "datum.suburb + ' (' + datum.postcode + ', ' + datum.state + ')'", "as": "label"},
+    {"calculate": "datum.rank_type == 'Top' ? datum.avg_taxable_income : -datum.avg_taxable_income", "as": "diverging_value"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "label",
+      "type": "nominal",
+      "sort": {"field": "diverging_value", "order": "descending"},
+      "axis": {"title": null, "labelLimit": 220}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 2, "height": 18},
+      "encoding": {
+        "x": {
+          "field": "diverging_value",
+          "type": "quantitative",
+          "axis": {
+            "title": "Average taxable income (AUD)",
+            "format": "$,d",
+            "values": [-50000, 0, 100000, 200000, 300000],
+            "labelExpr": "abs(datum.value) >= 1000 ? '$' + (abs(datum.value)/1000) + 'K' : '$' + abs(datum.value)"
+          }
+        },
+        "color": {
+          "field": "rank_type",
+          "type": "nominal",
+          "scale": {"domain": ["Top", "Bottom"], "range": ["#1a3a5c", "#c1502e"]},
+          "legend": {"title": null, "orient": "top-right", "labelFontSize": 11}
+        },
+        "tooltip": [
+          {"field": "rank_type", "title": "Group"},
+          {"field": "rank", "title": "Rank within group"},
+          {"field": "suburb", "title": "Suburb"},
+          {"field": "postcode", "title": "Postcode"},
+          {"field": "state", "title": "State"},
+          {"field": "avg_taxable_income", "title": "Avg income", "format": "$,.0f"},
+          {"field": "median_taxable_income", "title": "Median income", "format": "$,.0f"},
+          {"field": "individuals", "title": "Tax filers", "format": ",d"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": 500, "dx": 4, "color": "#1a1a1a"},
+      "encoding": {
+        "x": {"field": "diverging_value", "type": "quantitative"},
+        "text": {"field": "avg_taxable_income", "format": "$,.0f"},
+        "align": {
+          "condition": {"test": "datum.rank_type == 'Top'", "value": "left"},
+          "value": "right"
+        },
+        "dx": {
+          "condition": {"test": "datum.rank_type == 'Top'", "value": 4},
+          "value": -4
+        }
+      }
+    }
+  ]
+}

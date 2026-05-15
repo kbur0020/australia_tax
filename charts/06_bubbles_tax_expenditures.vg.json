@@ -1,0 +1,86 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "$269 billion the government chose not to collect",
+    "subtitle": ["Each circle is one tax concession; size = revenue forgone in 2025-26 ($m).", "Source: Australian Treasury, Tax Expenditures and Insights Statement 2025-26, Table 1.2."],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "offset": 12
+  },
+  "width": 720,
+  "height": 460,
+  "background": "transparent",
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {"stroke": null}
+  },
+  "data": {"url": "data/teis_large_tax_expenditures.csv"},
+  "transform": [
+    {"filter": "datum.revenue_forgone_m > 0"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "circle", "opacity": 0.78, "stroke": "#fbf8f2", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {
+          "field": "tax_type",
+          "type": "nominal",
+          "sort": ["Super", "CGT", "Income", "Deductions", "GST", "FBT", "Other"],
+          "axis": {
+            "title": "Tax type",
+            "titleFontSize": 12,
+            "titleFontWeight": 500,
+            "labelFontSize": 12,
+            "labelFontWeight": 600,
+            "labelPadding": 8,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "revenue_forgone_m",
+          "type": "quantitative",
+          "axis": {"title": "Revenue forgone (AUD millions)", "format": ",d", "labelExpr": "'$' + (datum.value/1000) + 'B'"}
+        },
+        "size": {
+          "field": "revenue_forgone_m",
+          "type": "quantitative",
+          "scale": {"range": [40, 4500]},
+          "legend": null
+        },
+        "color": {
+          "field": "tax_type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Super", "CGT", "Income", "Deductions", "GST", "FBT", "Other"],
+            "range": ["#1a3a5c", "#c1502e", "#7a5a2e", "#3f6a92", "#a17a44", "#5685ac", "#9a9a9a"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "title", "title": "Tax expenditure"},
+          {"field": "code", "title": "Code"},
+          {"field": "tax_type", "title": "Type"},
+          {"field": "revenue_forgone_m", "title": "Revenue forgone ($m)", "format": ",d"},
+          {"field": "avg_growth_2122_2425_pct", "title": "Avg growth 21-22 to 24-25 (%)"},
+          {"field": "projected_growth_pct", "title": "Projected growth (%)"},
+          {"field": "distributional_analysis_included", "title": "In distributional analysis"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.revenue_forgone_m >= 20000"}],
+      "mark": {"type": "text", "fontSize": 9, "fontWeight": 600, "color": "#fbf8f2", "lineBreak": "|"},
+      "encoding": {
+        "x": {"field": "tax_type", "type": "nominal", "sort": ["Super", "CGT", "Income", "Deductions", "GST", "FBT", "Other"]},
+        "y": {"field": "revenue_forgone_m", "type": "quantitative"},
+        "text": {
+          "field": "code"
+        }
+      }
+    }
+  ]
+}
