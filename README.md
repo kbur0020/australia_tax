@@ -96,12 +96,6 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-## Acknowledgement of AI use
-
-Anthropic's Claude AI was used during development for data cleaning automation,
-Vega-Lite specification scaffolding, and grammar review of narrative text.
-The investigation, narrative angle, chart selection, design system, and final
-editorial decisions are the author's.
 
 ## Licence
 
@@ -110,3 +104,5 @@ repository are released under [Creative Commons Attribution 4.0
 International](https://creativecommons.org/licenses/by/4.0/).
 
 The underlying datasets retain their original licences as listed above.
+
+Kai Burke 36196924 Studio 2
