@@ -95,7 +95,11 @@ Open `index.html` in any modern browser served from a local web server (charts w
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
+## Acknowledgement of AI use
 
+Anthropic's Claude AI was used during development for data cleaning, and grammar review of narrative text.
+The investigation, narrative angle, chart selection, design system, and final
+editorial decisions are the author's.
 
 ## Licence
 
