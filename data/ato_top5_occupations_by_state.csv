@@ -1,0 +1,41 @@
+state,rank_state,occupation_name,individuals,avg_taxable_income,median_taxable_income
+ACT,1,Surgeon,74,546309,452520
+ACT,2,Anaesthetist,66,466854,433546
+ACT,3,Internal medicine specialist,196,386389,334692
+ACT,4,"Auctioneer, or stock and station agent",6,334364,76682
+ACT,5,Psychiatrist,52,309430,314061
+NSW,1,Anaesthetist,726,410676,356538
+NSW,2,Financial dealer,2863,405030,198172
+NSW,3,Surgeon,979,368246,244691
+NSW,4,Internal medicine specialist,3296,322753,270780
+NSW,5,Psychiatrist,841,298715,250377
+NT,1,Surgeon,35,455549,367049
+NT,2,Anaesthetist,30,383537,389987
+NT,3,Psychiatrist,25,377002,360967
+NT,4,Internal medicine specialist,95,301751,292528
+NT,5,Judicial or other legal professionals,44,256221,288267
+QLD,1,Surgeon,909,526784,446018
+QLD,2,Anaesthetist,817,472025,442221
+QLD,3,Internal medicine specialist,1911,384089,357668
+QLD,4,Psychiatrist,658,311808,294512
+QLD,5,"Importer, exporter or wholesaler",530,303720,82089
+SA,1,Surgeon,363,474375,387348
+SA,2,Anaesthetist,319,404564,405571
+SA,3,Internal medicine specialist,776,350274,331310
+SA,4,Psychiatrist,234,266273,258225
+SA,5,Other medical practitioners,2059,257593,170939
+TAS,1,Surgeon,96,641931,517880
+TAS,2,Anaesthetist,123,386542,364364
+TAS,3,Internal medicine specialist,242,354969,306887
+TAS,4,"Importer, exporter or wholesaler",51,330422,82736
+TAS,5,Psychiatrist,65,288748,293881
+VIC,1,Anaesthetist,1046,496756,490731
+VIC,2,Surgeon,1307,477943,379357
+VIC,3,Internal medicine specialist,3074,327669,281653
+VIC,4,Financial dealer,1164,316876,155858
+VIC,5,Other medical practitioners,7977,269048,174776
+WA,1,Surgeon,443,559329,448272
+WA,2,Anaesthetist,502,418749,396025
+WA,3,Internal medicine specialist,1037,372186,343649
+WA,4,Financial dealer,348,298109,169492
+WA,5,Psychiatrist,321,296334,285204

@@ -1,0 +1,32 @@
+concession,decile,share_of_benefit_pct,recipients_thousands,total_revenue_forgone_2526_m
+Concessional taxation of super contributions (C2 + C3),1st (lowest),-0.5,500,32200
+Concessional taxation of super contributions (C2 + C3),2nd,-0.5,1000,32200
+Concessional taxation of super contributions (C2 + C3),3rd,1.5,1200,32200
+Concessional taxation of super contributions (C2 + C3),4th,3.5,1400,32200
+Concessional taxation of super contributions (C2 + C3),5th,7.0,1500,32200
+Concessional taxation of super contributions (C2 + C3),6th,9.0,1600,32200
+Concessional taxation of super contributions (C2 + C3),7th,11.0,1600,32200
+Concessional taxation of super contributions (C2 + C3),8th,14.0,1600,32200
+Concessional taxation of super contributions (C2 + C3),9th,21.0,1600,32200
+Concessional taxation of super contributions (C2 + C3),Highest,32.0,1500,32200
+Concessional taxation of super earnings (C1 + C4),Non-Lodgers,-0.5,3050,28500
+Concessional taxation of super earnings (C1 + C4),1st (lowest),1.5,1000,28500
+Concessional taxation of super earnings (C1 + C4),2nd,3.0,1300,28500
+Concessional taxation of super earnings (C1 + C4),3rd,4.5,1350,28500
+Concessional taxation of super earnings (C1 + C4),4th,5.5,1500,28500
+Concessional taxation of super earnings (C1 + C4),5th,6.5,1550,28500
+Concessional taxation of super earnings (C1 + C4),6th,6.5,1550,28500
+Concessional taxation of super earnings (C1 + C4),7th,7.5,1600,28500
+Concessional taxation of super earnings (C1 + C4),8th,10.0,1600,28500
+Concessional taxation of super earnings (C1 + C4),9th,16.0,1600,28500
+Concessional taxation of super earnings (C1 + C4),Highest,38.0,1500,28500
+Capital gains tax discount (E15),Lowest,0.5,1,21790
+Capital gains tax discount (E15),2nd,0.5,12,21790
+Capital gains tax discount (E15),3rd,0.5,75,21790
+Capital gains tax discount (E15),4th,1.0,65,21790
+Capital gains tax discount (E15),5th,1.0,60,21790
+Capital gains tax discount (E15),6th,1.0,65,21790
+Capital gains tax discount (E15),7th,1.5,75,21790
+Capital gains tax discount (E15),8th,2.0,95,21790
+Capital gains tax discount (E15),9th,5.0,130,21790
+Capital gains tax discount (E15),Highest,83.0,225,21790
