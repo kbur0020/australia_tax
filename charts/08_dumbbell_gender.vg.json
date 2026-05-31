@@ -1,0 +1,241 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Tax breaks favour men",
+    "subtitle": [
+      "For each tax break, the dots show the average dollar amount men (green)",
+      "and women (red) receive. The bigger the gap between the dots, the bigger",
+      "the gender difference. Men get the largest extra benefit from the capital",
+      "gains tax discount \u2014 about $5,000 more on average.",
+      "Source: Australian Treasury, Tax Expenditures and Insights Statement 2025-26."
+    ],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "offset": 12,
+    "subtitleLimit": 9999
+  },
+  "width": 580,
+  "height": 440,
+  "padding": {
+    "left": 20,
+    "right": 30,
+    "top": 12,
+    "bottom": 10
+  },
+  "background": "transparent",
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#3a3a3a"
+    }
+  },
+  "data": {
+    "url": "data/teis_gender_distribution.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.type == 'benefit'"
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "x": "shared"
+    }
+  },
+  "encoding": {
+    "y": {
+      "field": "concession",
+      "type": "nominal",
+      "sort": {
+        "field": "avg_men",
+        "order": "descending"
+      },
+      "axis": {
+        "title": null,
+        "labelLimit": 240,
+        "labelFontSize": 11
+      }
+    },
+    "x": {
+      "type": "quantitative",
+      "scale": {
+        "type": "log",
+        "domain": [
+          100,
+          30000
+        ],
+        "nice": false
+      },
+      "axis": {
+        "title": "Average benefit per recipient (AUD)",
+        "values": [
+          100,
+          200,
+          500,
+          1000,
+          2000,
+          5000,
+          10000,
+          20000
+        ],
+        "labelExpr": "datum.value >= 1000 ? '$' + (datum.value/1000) + 'K' : '$' + datum.value",
+        "grid": true
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#c4a37a",
+        "strokeWidth": 2.5,
+        "opacity": 0.7
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_women"
+        },
+        "x2": {
+          "field": "avg_men"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 220,
+        "stroke": "#fbf8f2",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_women"
+        },
+        "color": {
+          "value": "#a8302f"
+        },
+        "tooltip": [
+          {
+            "field": "concession",
+            "title": "Concession"
+          },
+          {
+            "field": "avg_women",
+            "title": "Avg benefit (women, $)",
+            "format": ",d"
+          },
+          {
+            "field": "avg_men",
+            "title": "Avg benefit (men, $)",
+            "format": ",d"
+          },
+          {
+            "field": "share_women_pct",
+            "title": "Women share of total (%)"
+          },
+          {
+            "field": "share_men_pct",
+            "title": "Men share of total (%)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 220,
+        "stroke": "#fbf8f2",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_men"
+        },
+        "color": {
+          "value": "#2d5e3f"
+        },
+        "tooltip": [
+          {
+            "field": "concession",
+            "title": "Concession"
+          },
+          {
+            "field": "avg_women",
+            "title": "Avg benefit (women, $)",
+            "format": ",d"
+          },
+          {
+            "field": "avg_men",
+            "title": "Avg benefit (men, $)",
+            "format": ",d"
+          },
+          {
+            "field": "share_women_pct",
+            "title": "Women share of total (%)"
+          },
+          {
+            "field": "share_men_pct",
+            "title": "Men share of total (%)"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.concession == 'CGT discount for individuals and trusts'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": 700,
+        "color": "#a8302f",
+        "dy": -14,
+        "align": "center"
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_women"
+        },
+        "text": {
+          "value": "Women"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.concession == 'CGT discount for individuals and trusts'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": 700,
+        "color": "#2d5e3f",
+        "dy": -14,
+        "align": "center"
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_men"
+        },
+        "text": {
+          "value": "Men"
+        }
+      }
+    }
+  ]
+}
