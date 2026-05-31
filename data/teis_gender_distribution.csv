@@ -1,0 +1,14 @@
+concession,type,avg_men,avg_women,recipients_men_m,recipients_women_m,share_men_pct,share_women_pct
+Concessional taxation of super contributions,benefit,2490,1610,6.7,6.6,61,39
+Concessional taxation of super earnings,benefit,1700,1170,9.0,8.6,60,40
+CGT discount for individuals and trusts,benefit,21010,15930,0.4,0.4,58,42
+Medicare Levy low-income thresholds,benefit,320,330,2.1,2.8,42,58
+Seniors and pensioners tax offset,benefit,970,990,0.2,0.4,35,65
+Individuals deductions for gifts and donations,benefit,1150,690,2.1,2.3,61,39
+Unincorporated small business tax discount,benefit,600,570,0.9,0.6,61,39
+Medicare levy surcharge,liability,1450,1140,0.5,0.3,63,37
+Rental deductions,benefit,9790,7710,1.2,1.2,57,43
+Work-related expenses,benefit,1220,750,5.6,5.2,63,37
+Cost of managing tax affairs,benefit,300,190,3.7,3.2,64,36
+Trust distributions to individuals,amount,41310,36360,0.9,0.9,53,47
+Franking credits received by individuals,amount,6840,5800,1.8,1.8,55,45

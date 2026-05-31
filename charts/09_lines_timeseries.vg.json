@@ -1,0 +1,211 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The cost of tax breaks keeps growing",
+    "subtitle": [
+      "Three of the biggest tax breaks plotted over time. Solid lines show what they have actually cost; lines after the dashed marker are Treasury's forecasts.",
+      "Together they are expected to cost $92 billion a year by 2028-29 \u2014 a 44% jump in just seven years.",
+      "Source: Australian Treasury, Tax Expenditures and Insights Statement 2025-26."
+    ],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "offset": 12
+  },
+  "width": 660,
+  "height": 380,
+  "background": "transparent",
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#3a3a3a"
+    }
+  },
+  "data": {
+    "url": "data/teis_big3_timeseries.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "super_contributions_m",
+        "super_earnings_m",
+        "cgt_discount_m"
+      ],
+      "as": [
+        "concession_key",
+        "value_m"
+      ]
+    },
+    {
+      "calculate": "datum.concession_key == 'super_contributions_m' ? 'Super contributions concession' : (datum.concession_key == 'super_earnings_m' ? 'Super earnings concession' : 'CGT discount')",
+      "as": "concession"
+    },
+    {
+      "calculate": "datum.value_m / 1000",
+      "as": "value_bn"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#c4a37a",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "opacity": 0.6
+      },
+      "encoding": {
+        "x": {
+          "datum": "2024-25"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "color": "#7a4f1c",
+        "fontWeight": 500,
+        "dx": 6,
+        "dy": -160,
+        "align": "left"
+      },
+      "encoding": {
+        "x": {
+          "datum": "2024-25"
+        },
+        "text": {
+          "value": "Projections \u2192"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "financial_year",
+          "type": "ordinal",
+          "axis": {
+            "title": "Financial year",
+            "labelAngle": 0
+          }
+        },
+        "y": {
+          "field": "value_bn",
+          "type": "quantitative",
+          "axis": {
+            "title": "Annual revenue forgone (AUD billions)",
+            "labelExpr": "'$' + datum.value + 'B'"
+          }
+        },
+        "color": {
+          "field": "concession",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Super contributions concession",
+              "Super earnings concession",
+              "CGT discount"
+            ],
+            "range": [
+              "#2d5e3f",
+              "#7a9e87",
+              "#a8302f"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top-left",
+            "labelFontSize": 11,
+            "symbolType": "stroke",
+            "symbolStrokeWidth": 3
+          }
+        },
+        "tooltip": [
+          {
+            "field": "financial_year",
+            "title": "Year"
+          },
+          {
+            "field": "concession",
+            "title": "Concession"
+          },
+          {
+            "field": "value_m",
+            "title": "Revenue forgone ($m)",
+            "format": ",d"
+          },
+          {
+            "field": "value_bn",
+            "title": "Revenue forgone ($bn)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 90,
+        "stroke": "#fbf8f2",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "financial_year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "value_bn",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "concession",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Super contributions concession",
+              "Super earnings concession",
+              "CGT discount"
+            ],
+            "range": [
+              "#2d5e3f",
+              "#7a9e87",
+              "#a8302f"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "financial_year",
+            "title": "Year"
+          },
+          {
+            "field": "concession",
+            "title": "Concession"
+          },
+          {
+            "field": "value_m",
+            "title": "Revenue forgone ($m)",
+            "format": ",d"
+          }
+        ]
+      }
+    }
+  ]
+}

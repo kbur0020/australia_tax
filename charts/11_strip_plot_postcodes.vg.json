@@ -1,0 +1,201 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The long tail of Australian incomes",
+    "subtitle": [
+      "Each dot is one of the 2,622 Australian postcodes that lodged tax returns. They are grouped by state, with the average income shown on the horizontal axis.",
+      "Most postcodes sit between $50,000 and $80,000, but a thin tail of very wealthy postcodes stretches far to the right. The black tick marks each state's middle (median) value.",
+      "Source: Australian Tax Office, Taxation Statistics 2022-23."
+    ],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "subtitleLimit": 1200,
+    "offset": 12
+  },
+  "width": 720,
+  "height": 360,
+  "padding": {
+    "left": 20,
+    "right": 30,
+    "top": 12,
+    "bottom": 10
+  },
+  "background": "transparent",
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 500,
+      "labelColor": "#3a3a3a"
+    }
+  },
+  "data": {
+    "url": "data/ato_postcode_australia.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.avg_taxable_income != null"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": [
+        "NSW",
+        "VIC",
+        "QLD",
+        "WA",
+        "SA",
+        "TAS",
+        "ACT",
+        "NT"
+      ],
+      "axis": {
+        "title": null,
+        "labelFontSize": 12,
+        "labelFontWeight": 600,
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "x": {
+      "field": "avg_taxable_income",
+      "type": "quantitative",
+      "scale": {
+        "type": "log",
+        "domain": [
+          3000,
+          350000
+        ]
+      },
+      "axis": {
+        "title": "Average taxable income per postcode (AUD, log scale)",
+        "labelExpr": "datum.value >= 1000 ? '$' + (datum.value/1000) + 'K' : '$' + datum.value",
+        "values": [
+          5000,
+          10000,
+          25000,
+          50000,
+          100000,
+          250000
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 28,
+        "opacity": 0.45
+      },
+      "encoding": {
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "NSW",
+              "VIC",
+              "QLD",
+              "WA",
+              "SA",
+              "TAS",
+              "ACT",
+              "NT"
+            ],
+            "range": [
+              "#2d5e3f",
+              "#1f4530",
+              "#4a7a5a",
+              "#7a9e87",
+              "#a8c2a8",
+              "#c4a37a",
+              "#5a5a5a",
+              "#9a9a9a"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "postcode",
+            "title": "Postcode"
+          },
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "avg_taxable_income",
+            "title": "Avg taxable income",
+            "format": "$,.0f"
+          },
+          {
+            "field": "median_taxable_income",
+            "title": "Median income",
+            "format": "$,.0f"
+          },
+          {
+            "field": "individuals",
+            "title": "Tax filers",
+            "format": ",d"
+          },
+          {
+            "field": "rank_australia",
+            "title": "National rank",
+            "format": "d"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "median",
+              "field": "avg_taxable_income",
+              "as": "median_income"
+            }
+          ],
+          "groupby": [
+            "state"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "tick",
+        "thickness": 3,
+        "size": 32,
+        "color": "#1a1a1a",
+        "orient": "vertical"
+      },
+      "encoding": {
+        "x": {
+          "field": "median_income",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "median_income",
+            "title": "Median postcode income (across all postcodes in state)",
+            "format": "$,.0f"
+          }
+        ]
+      }
+    }
+  ]
+}
