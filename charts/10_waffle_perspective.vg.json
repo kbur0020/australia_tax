@@ -1,0 +1,256 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "$269 billion in tax breaks: each square is $2 billion",
+    "subtitle": [
+      "Compare the tax money the government chose not to collect (top row, red)",
+      "with what it actually spent on each major area (in green).",
+      "The red row is twice as long as the federal Health budget \u2014 and 36 times longer",
+      "than the foreign aid budget \u2014 every single year.",
+      "Sources: Treasury Tax Expenditures Statement 2025-26 and Final Budget Outcome 2024-25."
+    ],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "subtitleLimit": 9999,
+    "offset": 12
+  },
+  "background": "transparent",
+  "padding": {
+    "left": 20,
+    "right": 30,
+    "top": 12,
+    "bottom": 16
+  },
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "facet": {
+      "spacing": 14
+    }
+  },
+  "data": {
+    "url": "data/derived_waffle.csv"
+  },
+  "facet": {
+    "row": {
+      "field": "category",
+      "type": "nominal",
+      "sort": {
+        "field": "total_m",
+        "order": "descending"
+      },
+      "header": {
+        "title": null,
+        "labelAngle": 0,
+        "labelAlign": "left",
+        "labelAnchor": "start",
+        "labelFontSize": 12,
+        "labelFontWeight": 700,
+        "labelColor": "#1a1a1a",
+        "labelLimit": 280,
+        "labelPadding": 6
+      }
+    }
+  },
+  "spec": {
+    "width": 1080,
+    "height": 8,
+    "mark": {
+      "type": "rect",
+      "stroke": "#fbf8f2",
+      "strokeWidth": 1.0,
+      "cornerRadius": 0.5
+    },
+    "encoding": {
+      "x": {
+        "field": "tile_index",
+        "type": "ordinal",
+        "axis": null,
+        "scale": {
+          "domain": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134
+          ],
+          "paddingInner": 0.22
+        }
+      },
+      "color": {
+        "field": "group",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "expenditure",
+            "spending"
+          ],
+          "range": [
+            "#a8302f",
+            "#2d5e3f"
+          ]
+        },
+        "legend": {
+          "title": null,
+          "orient": "bottom-right",
+          "labelFontSize": 11,
+          "labelExpr": "datum.label == 'expenditure' ? 'Tax revenue forgone' : 'Direct federal spending'"
+        }
+      },
+      "tooltip": [
+        {
+          "field": "category",
+          "title": "Item"
+        },
+        {
+          "field": "total_m",
+          "title": "Annual amount ($m)",
+          "format": ",d"
+        },
+        {
+          "field": "total_bn",
+          "title": "Annual amount ($bn)"
+        },
+        {
+          "field": "tile_index",
+          "title": "Tile number (each = $2B)"
+        }
+      ]
+    }
+  }
+}
