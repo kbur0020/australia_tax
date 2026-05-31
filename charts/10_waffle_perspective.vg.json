@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "$269 billion in tax breaks: each square is $2 billion",
+    "subtitle": [
+      "Compare the tax money the government chose not to collect (top row, red)",
+      "with what it actually spent on each major area (in green).",
+      "The red row is twice as long as the federal Health budget \u2014 and 36 times longer",
+      "than the foreign aid budget \u2014 every single year.",
+      "Sources: Treasury Tax Expenditures Statement 2025-26 and Final Budget Outcome 2024-25."
+    ],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "subtitleLimit": 9999,
+    "offset": 12
+  },
+  "width": 800,
+  "background": "transparent",
+  "padding": {
+    "left": 20,
+    "right": 30,
+    "top": 12,
+    "bottom": 16
+  },
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "facet": {
+      "spacing": 14
+    }
+  },
+  "data": {
+    "url": "data/derived_waffle.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.tile_index + 1",
+      "as": "tile_index_end"
+    }
+  ],
+  "facet": {
+    "row": {
+      "field": "category",
+      "type": "nominal",
+      "sort": {
+        "field": "total_m",
+        "order": "descending"
+      },
+      "header": {
+        "title": null,
+        "labelAngle": 0,
+        "labelAlign": "left",
+        "labelAnchor": "start",
+        "labelFontSize": 12,
+        "labelFontWeight": 700,
+        "labelColor": "#1a1a1a",
+        "labelLimit": 280,
+        "labelPadding": 6
+      }
+    }
+  },
+  "spec": {
+    "width": 800,
+    "height": 26,
+    "mark": {
+      "type": "rect",
+      "stroke": "#fbf8f2",
+      "strokeWidth": 0.7,
+      "cornerRadius": 0.5
+    },
+    "encoding": {
+      "x": {
+        "field": "tile_index",
+        "type": "quantitative",
+        "scale": {
+          "domain": [
+            0,
+            136
+          ],
+          "nice": false
+        },
+        "axis": null
+      },
+      "x2": {
+        "field": "tile_index_end"
+      },
+      "y": {
+        "datum": 0
+      },
+      "y2": {
+        "datum": 1
+      },
+      "color": {
+        "field": "group",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "expenditure",
+            "spending"
+          ],
+          "range": [
+            "#a8302f",
+            "#2d5e3f"
+          ]
+        },
+        "legend": {
+          "title": null,
+          "orient": "bottom-right",
+          "labelFontSize": 11,
+          "labelExpr": "datum.label == 'expenditure' ? 'Tax revenue forgone' : 'Direct federal spending'"
+        }
+      },
+      "tooltip": [
+        {
+          "field": "category",
+          "title": "Item"
+        },
+        {
+          "field": "total_m",
+          "title": "Annual amount ($m)",
+          "format": ",d"
+        },
+        {
+          "field": "total_bn",
+          "title": "Annual amount ($bn)"
+        },
+        {
+          "field": "tile_index",
+          "title": "Tile number (each = $2B)"
+        }
+      ]
+    }
+  }
+}
