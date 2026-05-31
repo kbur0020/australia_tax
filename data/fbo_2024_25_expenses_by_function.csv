@@ -1,0 +1,83 @@
+function,sub_function,level,fy23_24_outcome_m,fy24_25_estimate_m,fy24_25_outcome_m,change_vs_estimate_m
+General public services,Legislative and executive affairs,sub,2125,2335,2406,71
+General public services,Financial and fiscal affairs,sub,10666,10364,10764,400
+General public services,Foreign affairs and economic aid,sub,7141,8760,7488,-1272
+General public services,General research,sub,3947,4775,4346,-429
+General public services,General services,sub,1359,1240,1748,508
+General public services,Government superannuation benefits,sub,6325,5578,6136,558
+General public services,Total general public services,total,31563,33052,32887,-165
+Defence,Defence,total,45103,49344,47785,-1559
+Public order and safety,Courts and legal services,sub,1827,1811,1944,133
+Public order and safety,Other public order and safety,sub,5912,6967,6573,-394
+Public order and safety,Total public order and safety,total,7739,8778,8517,-261
+Education,Higher education,sub,10788,11515,11399,-116
+Education,Vocational and other education,sub,2237,2638,2325,-313
+Education,Schools (total),sub,29122,31082,31071,-12
+Education,Non-government schools,sub_detail,18021,19370,19372,1
+Education,Government schools,sub_detail,11101,11712,11699,-13
+Education,School education – specific funding,sub,1122,956,905,-51
+Education,Student assistance,sub,4434,16972,4848,-12124
+Education,General administration (education),sub,308,340,354,14
+Education,Total education,total,48011,63503,50901,-12602
+Health,Medical services and benefits,sub,38593,42027,41957,-70
+Health,Pharmaceutical benefits and services,sub,19430,22036,21414,-622
+Health,Assistance to the states for public hospitals,sub,27855,30221,30217,-4
+Health,Hospital services,sub,1136,1180,1092,-88
+Health,Health services,sub,14018,15152,31259,16107
+Health,General administration (health),sub,4334,5105,4946,-159
+Health,Aboriginal and Torres Strait Islander health,sub,1224,1345,1363,18
+Health,Total health,total,106589,117067,132249,15182
+Social security and welfare,Assistance to the aged,sub,94849,102448,101767,-681
+Social security and welfare,Assistance to veterans and dependants,sub,11002,10724,22016,11292
+Social security and welfare,Assistance to people with disabilities,sub,78996,85606,86338,732
+Social security and welfare,Assistance to families with children,sub,44107,48873,48193,-680
+Social security and welfare,Assistance to the unemployed and the sick,sub,14859,16458,16728,270
+Social security and welfare,Other welfare programs,sub,1622,1760,1703,-57
+Social security and welfare,Assistance for Indigenous Australians nec,sub,2853,3386,3031,-356
+Social security and welfare,General administration (social security),sub,4896,5646,5704,58
+Social security and welfare,Total social security and welfare,total,253184,274901,285479,10578
+Housing and community amenities,Housing,sub,3979,12039,3297,-8742
+Housing and community amenities,Urban and regional development,sub,1430,3521,2821,-700
+Housing and community amenities,Environment protection,sub,1574,2562,2211,-351
+Housing and community amenities,Total housing and community amenities,total,6982,18122,8330,-9793
+Recreation and culture,Broadcasting,sub,1689,1781,1792,11
+Recreation and culture,Arts and cultural heritage,sub,2041,2348,2531,183
+Recreation and culture,Sport and recreation,sub,597,937,809,-127
+Recreation and culture,National estate and parks,sub,761,793,834,41
+Recreation and culture,Total recreation and culture,total,5088,5859,5966,108
+Fuel and energy,Fuel and energy,total,12988,16437,14954,-1484
+"Agriculture, forestry and fishing",Wool industry,sub,51,62,46,-16
+"Agriculture, forestry and fishing",Grains industry,sub,235,292,269,-23
+"Agriculture, forestry and fishing",Dairy industry,sub,55,58,60,2
+"Agriculture, forestry and fishing","Cattle, sheep and pig industry",sub,252,272,261,-11
+"Agriculture, forestry and fishing","Fishing, horticulture and other agriculture",sub,464,630,521,-108
+"Agriculture, forestry and fishing",General assistance not allocated to specific industries,sub,44,50,46,-4
+"Agriculture, forestry and fishing",Rural assistance,sub,326,394,299,-95
+"Agriculture, forestry and fishing",Natural resources development,sub,851,1313,849,-463
+"Agriculture, forestry and fishing",General administration (agriculture),sub,1275,1391,1449,58
+"Agriculture, forestry and fishing","Total agriculture, forestry and fishing",total,3554,4461,3801,-660
+"Mining, manufacturing and construction","Mining, manufacturing and construction",total,5123,5866,4937,-930
+Transport and communication,Communication,sub,1654,1922,1723,-198
+Transport and communication,Rail transport,sub,2852,4112,4245,133
+Transport and communication,Air transport,sub,368,488,412,-76
+Transport and communication,Road transport,sub,8380,8568,8957,389
+Transport and communication,Sea transport,sub,503,509,499,-10
+Transport and communication,Other transport and communication,sub,284,381,407,26
+Transport and communication,Total transport and communication,total,14041,15980,16244,264
+Other economic affairs,Tourism and area promotion,sub,192,197,196,0
+Other economic affairs,Total labour and employment affairs,sub,6094,6104,5425,-679
+Other economic affairs,Vocational and industry training,sub_detail,2999,2599,2113,-485
+Other economic affairs,Labour market assistance to job seekers and industry,sub_detail,2164,2395,2268,-127
+Other economic affairs,Industrial relations,sub_detail,931,1111,1044,-67
+Other economic affairs,Immigration,sub,3367,3963,3758,-206
+Other economic affairs,Other economic affairs nec,sub,3838,3799,3516,-282
+Other economic affairs,Total other economic affairs,total,13490,14063,12895,-1167
+Other purposes,Public debt interest,sub,22504,23940,23868,-72
+Other purposes,Nominal superannuation interest,sub,13375,14241,14250,9
+Other purposes,General purpose inter-government transactions,sub,94607,97382,99937,2555
+Other purposes,General revenue assistance – states and territories,sub_detail,91305,96280,97288,1008
+Other purposes,Local government assistance,sub_detail,3301,1102,2649,1547
+Other purposes,Natural disaster relief,sub,1913,1506,7071,5565
+Other purposes,Contingency reserve,sub,0,-1747,0,1747
+Other purposes,Total other purposes,total,132399,135322,145126,9804
+Total,Total expenses,grand_total,685857,762756,770071,7315

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Where every $1 of federal spending went in 2024-25",
+    "subtitle": ["Total federal expenses: $770 billion. Social security and welfare alone consumed 37 cents in every dollar.", "Source: Australian Government, Final Budget Outcome 2024-25, Appendix A."],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "offset": 12
+  },
+  "width": 720,
+  "height": 460,
+  "background": "transparent",
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {"stroke": null}
+  },
+  "data": {"url": "data/fbo_2024_25_by_function_summary.csv"},
+  "transform": [
+    {"calculate": "datum.fy24_25_outcome_m / 1000", "as": "billions"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 90, "outerRadius": 180, "stroke": "#fbf8f2", "strokeWidth": 2, "padAngle": 0.005},
+      "encoding": {
+        "theta": {"field": "fy24_25_outcome_m", "type": "quantitative", "stack": true},
+        "color": {
+          "field": "function",
+          "type": "nominal",
+          "sort": {"field": "fy24_25_outcome_m", "order": "descending"},
+          "scale": {
+            "range": ["#1f4530","#2d5e3f","#3d7250","#4f8662","#6b9a78","#8aae90","#a8c2a8","#c6d5be","#c4a37a","#d4b48c","#5a5a5a","#9a9a9a","#a8302f","#7a1a1a"]
+          },
+          "legend": {
+            "title": "Function (sorted by spend)",
+            "titleFontSize": 11,
+            "titleFontWeight": 500,
+            "labelFontSize": 10,
+            "orient": "right",
+            "symbolSize": 100,
+            "rowPadding": 4
+          }
+        },
+        "order": {"field": "fy24_25_outcome_m", "type": "quantitative", "sort": "descending"},
+        "tooltip": [
+          {"field": "function", "title": "Function"},
+          {"field": "fy24_25_outcome_m", "title": "2024-25 outcome ($m)", "format": ",d"},
+          {"field": "billions", "title": "Outcome ($bn)", "format": ".1f"},
+          {"field": "pct_of_total", "title": "Share of total federal spending", "format": ".2f"},
+          {"field": "fy24_25_estimate_m", "title": "Budget estimate ($m)", "format": ",d"},
+          {"field": "change_vs_estimate_m", "title": "Variance ($m)", "format": ",d"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 26, "fontWeight": 700, "color": "#1f4530", "align": "center", "dy": -8},
+      "encoding": {"text": {"value": "$770bn"}}
+    },
+    {
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": 500, "color": "#5a5a5a", "align": "center", "dy": 14},
+      "encoding": {"text": {"value": "Total federal expenses 2024-25"}}
+    }
+  ]
+}

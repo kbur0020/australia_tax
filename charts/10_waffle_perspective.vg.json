@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "$269 billion: each square is $500 million",
+    "subtitle": [
+      "Annual tax revenue forgone in 2025-26 (top, in crimson) vs federal spending on each major function (2024-25).",
+      "The $269bn forgone is twice total federal Health spending — and 36 times the foreign aid budget.",
+      "Sources: Treasury TEIS 2025-26 (Table 1.2); Final Budget Outcome 2024-25 (Appendix A). Custom-built derived chart."
+    ],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "subtitleLimit": 1200,
+    "offset": 12
+  },
+  "width": 600,
+  "background": "transparent",
+  "padding": {"left": 20, "right": 20, "top": 12, "bottom": 16},
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {"stroke": null},
+    "facet": {"spacing": 14}
+  },
+  "data": {"url": "data/derived_waffle.csv"},
+  "facet": {
+    "row": {
+      "field": "category",
+      "type": "nominal",
+      "sort": {"field": "total_m", "order": "descending"},
+      "header": {
+        "title": null,
+        "labelAngle": 0,
+        "labelAlign": "left",
+        "labelAnchor": "start",
+        "labelFontSize": 11,
+        "labelFontWeight": 700,
+        "labelColor": "#1a1a1a",
+        "labelLimit": 280,
+        "labelPadding": 2
+      }
+    }
+  },
+  "spec": {
+    "width": 600,
+    "mark": {"type": "rect", "stroke": "#fbf8f2", "strokeWidth": 1, "cornerRadius": 1},
+    "encoding": {
+      "x": {
+        "field": "col",
+        "type": "ordinal",
+        "axis": null,
+        "scale": {"domain": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]}
+      },
+      "y": {
+        "field": "row",
+        "type": "ordinal",
+        "axis": null
+      },
+      "color": {
+        "field": "group",
+        "type": "nominal",
+        "scale": {"domain": ["expenditure", "spending"], "range": ["#a8302f", "#2d5e3f"]},
+        "legend": {
+          "title": null,
+          "orient": "bottom-right",
+          "labelFontSize": 11,
+          "labelExpr": "datum.label == 'expenditure' ? 'Tax revenue forgone' : 'Direct federal spending'"
+        }
+      },
+      "tooltip": [
+        {"field": "category", "title": "Item"},
+        {"field": "total_m", "title": "Annual amount ($m)", "format": ",d"},
+        {"field": "total_bn", "title": "Annual amount ($bn)"},
+        {"field": "tile_index", "title": "Tile (each = $500M)"}
+      ]
+    }
+  }
+}

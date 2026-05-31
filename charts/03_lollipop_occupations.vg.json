@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Australia's highest-earning occupations",
+    "subtitle": ["Average taxable income for the 10 best-paid occupations, 2022-23.", "Source: ATO Taxation Statistics 2022-23, Snapshot Table 7A."],
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": 600,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5a5a5a",
+    "offset": 12
+  },
+  "width": 560,
+  "height": 360,
+  "padding": {"left": 20, "right": 20, "top": 10, "bottom": 10},
+  "background": "transparent",
+  "config": {
+    "font": "Source Sans 3, Source Sans Pro, sans-serif",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 11, "titleFontSize": 12, "titleFontWeight": 500, "labelColor": "#3a3a3a"}
+  },
+  "data": {"url": "data/ato_top10_occupations_australia.csv"},
+  "transform": [
+    {"calculate": "0", "as": "zero"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#c4a37a", "strokeWidth": 2, "opacity": 0.6},
+      "encoding": {
+        "y": {
+          "field": "occupation_name",
+          "type": "nominal",
+          "sort": {"field": "avg_taxable_income", "order": "descending"},
+          "axis": {"title": null, "labelLimit": 320, "labelFontSize": 12, "labelPadding": 6}
+        },
+        "x": {
+          "field": "zero",
+          "type": "quantitative",
+          "axis": {"title": "Average taxable income (AUD)", "format": "$,d", "labelExpr": "'$' + (datum.value/1000) + 'K'"}
+        },
+        "x2": {"field": "avg_taxable_income"}
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 280, "opacity": 1},
+      "encoding": {
+        "y": {
+          "field": "occupation_name",
+          "type": "nominal",
+          "sort": {"field": "avg_taxable_income", "order": "descending"}
+        },
+        "x": {"field": "avg_taxable_income", "type": "quantitative"},
+        "color": {
+          "field": "avg_taxable_income",
+          "type": "quantitative",
+          "scale": {"range": ["#7a9e87", "#2d5e3f"]},
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "rank", "title": "Rank", "type": "quantitative"},
+          {"field": "occupation_name", "title": "Occupation", "type": "nominal"},
+          {"field": "occupation_code", "title": "ANZSCO code", "type": "nominal"},
+          {"field": "individuals", "title": "Number employed", "format": ",d", "type": "quantitative"},
+          {"field": "avg_taxable_income", "title": "Avg taxable income", "format": "$,.0f", "type": "quantitative"},
+          {"field": "median_taxable_income", "title": "Median taxable income", "format": "$,.0f", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": 600, "dx": 10, "align": "left", "color": "#1a1a1a"},
+      "encoding": {
+        "y": {
+          "field": "occupation_name",
+          "type": "nominal",
+          "sort": {"field": "avg_taxable_income", "order": "descending"}
+        },
+        "x": {"field": "avg_taxable_income", "type": "quantitative"},
+        "text": {"field": "avg_taxable_income", "format": "$,.0f", "type": "quantitative"}
+      }
+    }
+  ]
+}
